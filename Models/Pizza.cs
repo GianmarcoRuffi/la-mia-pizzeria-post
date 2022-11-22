@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using la_mia_pizzeria_static.ValidationCustomClasses;
+using System.ComponentModel.DataAnnotations;
 
 namespace la_mia_pizzeria_static.Models
 {
@@ -12,6 +13,7 @@ namespace la_mia_pizzeria_static.Models
 
         [Required(ErrorMessage = "La pizza deve avere una descrizione")]
         [StringLength(300, ErrorMessage = "La descrizione non può avere più di 300 caratteri")]
+        [FiveWordsValidation]
         public string? Description { get; set; }
 
         [Required(ErrorMessage = "Devi inserire un link all'immagine della pizza")]
