@@ -1,14 +1,25 @@
-﻿namespace la_mia_pizzeria_static.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace la_mia_pizzeria_static.Models
 {
     public class Pizza
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
 
-        public string Image { get; set; }
+        [Required(ErrorMessage = "Il campo è obbligatorio")]
+        [StringLength(40, ErrorMessage = "Il nome non può avere più di 40 caratteri")]
+        public string? Name { get; set; }
 
-        public double Prezzo { get; set; }
+        [Required(ErrorMessage = "Il campo è obbligatorio")]
+        [StringLength(200, ErrorMessage = "La descrizione non può avere più di 200 caratteri")]
+        public string? Description { get; set; }
+
+        [Required(ErrorMessage = "Il campo è obbligatorio")]
+        public string? Image { get; set; }
+
+        [Required(ErrorMessage = "Il campo è obbligatorio")]
+        [Range(1, 999, ErrorMessage = "La pizza deve avere un prezzo valido")]
+        public double? Prezzo { get; set; }
 
 
         public Pizza() {
